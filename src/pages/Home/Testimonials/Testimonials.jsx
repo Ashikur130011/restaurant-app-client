@@ -26,7 +26,7 @@ const Testimonials = () => {
                 subHeading="What Our Client Say"
                 heading="Testimonials"
             ></SectionTitle>
-            <div className='mb-8 w-3/4 mx-auto'>
+            <div className='mb-8 pt-16 w-3/4 mx-auto'>
                 {
                     <Swiper
                         pagination={{

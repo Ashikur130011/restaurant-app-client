@@ -11,7 +11,7 @@ const Featured = () => {
                 subHeading="Check it out"
                 heading="From our menu"
             ></SectionTitle>
-        <div className='md:flex justify-center items-center mx-auto pb-20 w-3/4'>
+        <div className='md:flex justify-center items-center mx-auto pt-16 pb-20 w-3/4'>
             <div>
                 <img src={featuredImage} alt="" />
             </div>
@@ -19,7 +19,7 @@ const Featured = () => {
                 <p className='text-xl'>Aug 20, 2029</p>
                 <p className='text-xl uppercase'>Where can i get some?</p>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti, distinctio voluptatibus ea veniam reprehenderit nesciunt quaerat explicabo, nam ullam eos rerum qui? Recusandae adipisci, nam minima facilis numquam voluptatum distinctio!</p>
-                <button className="btn btn-outline mt-4 border-0 border-b-4 btn-warning">Read More</button>
+                <button className="btn btn-outline mt-4 uppercase border-0 border-b-4 btn-warning">Read More</button>
             </div>
         </div>
             </div>
