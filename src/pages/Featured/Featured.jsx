@@ -16,9 +16,10 @@ const Featured = () => {
                 <img src={featuredImage} alt="" />
             </div>
             <div className='md:ml-10 text-left'>
-                <p>Aug 20, 2029</p>
-                <p>Where can i get some?</p>
+                <p className='text-xl'>Aug 20, 2029</p>
+                <p className='text-xl uppercase'>Where can i get some?</p>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti, distinctio voluptatibus ea veniam reprehenderit nesciunt quaerat explicabo, nam ullam eos rerum qui? Recusandae adipisci, nam minima facilis numquam voluptatum distinctio!</p>
+                <button className="btn btn-outline mt-4 border-0 border-b-4 btn-warning">Read More</button>
             </div>
         </div>
             </div>
