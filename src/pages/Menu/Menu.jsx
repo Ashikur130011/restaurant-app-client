@@ -29,28 +29,28 @@ const Menu = () => {
             <MenuCategory btnText={'ORDER YOUR FAVOURITE FOOD'} items={offered} />
             <MenuCategory 
                 items={dessert}
-                title={'Desserts'}
+                title={'dessert'}
                 img={dessertImg}
                 text={'Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'}
                 btnText={'ORDER YOUR FAVOURITE FOOD'}
             />
             <MenuCategory 
                 items={salad}
-                title={'Salad'}
+                title={'salad'}
                 img={saladImg}
                 text={'Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'}
                 btnText={'ORDER YOUR FAVOURITE FOOD'}
             />
             <MenuCategory 
                 items={pizza}
-                title={'Pizza'}
+                title={'pizza'}
                 img={pizzaImg}
                 text={'Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'}
                 btnText={'ORDER YOUR FAVOURITE FOOD'}
             />
             <MenuCategory 
                 items={soup}
-                title={'Soup'}
+                title={'soup'}
                 img={soupImg}
                 text={'Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'}
                 btnText={'ORDER YOUR FAVOURITE FOOD'}

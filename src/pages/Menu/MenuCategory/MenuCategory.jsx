@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 import MenuItem from '../../Shared/MenuItem/MenuItem';
 import CoverLite from '../CoverLite/CoverLite';
 
@@ -14,7 +14,8 @@ const MenuCategory = ({items, text, title, img, btnText }) => {
                     ></MenuItem>)
                 }
             </div>
-            <button className="btn btn-outline mt-10 uppercase border-0 border-b-4 btn-warning">{btnText}</button>
+            <Link to={`/order/${title}`}>
+            <button className="btn btn-outline mt-10 uppercase border-0 border-b-4 btn-warning">{btnText}</button></Link>
         </div>
     );
 };

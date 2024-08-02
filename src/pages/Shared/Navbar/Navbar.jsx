@@ -2,13 +2,13 @@ import { Link} from "react-router-dom";
 
 
 const Navbar = () => {
-
+    
     const navOptions = <>
         <li><Link to="/" className="uppercase me-2 font-bold">Home</Link></li>
         <li><Link to="/" className="uppercase me-2 font-bold">Contact Us</Link></li>
-        <li><Link to="/" className="uppercase me-2 font-bold">Dashboard</Link></li>
+        <li><Link to="/login" className="uppercase me-2 font-bold">Login</Link></li>
         <li><Link to="/menu" className="uppercase me-2 font-bold">Our Menu</Link></li>
-        <li><Link to="/" className="uppercase me-2 font-bold">Our Shop</Link></li>
+        <li><Link to="/order/salad" className="uppercase me-2 font-bold">Our Food</Link></li>
     </>
     return (
             <div className="navbar md:fixed z-10 max-w-screen-xl bg-black bg-opacity-30 md:text-white ">
