@@ -1,15 +1,24 @@
+import { useContext } from "react";
 import { Link} from "react-router-dom";
+import { AuthContext } from "../../../providers/AuthProvider";
+import './Navbar.css'
 
 
 const Navbar = () => {
-    
+    const {user, logOut} = useContext(AuthContext)
     const navOptions = <>
-        <li><Link to="/" className="uppercase me-2 font-bold">Home</Link></li>
-        <li><Link to="/" className="uppercase me-2 font-bold">Contact Us</Link></li>
-        <li><Link to="/login" className="uppercase me-2 font-bold">Login</Link></li>
-        <li><Link to="/menu" className="uppercase me-2 font-bold">Our Menu</Link></li>
-        <li><Link to="/order/salad" className="uppercase me-2 font-bold">Our Food</Link></li>
+        <li><Link to="/" className="uppercase me-2 navbar-button font-bold">Home</Link></li>
+        <li><Link to="/" className="uppercase me-2 navbar-button font-bold">Contact Us</Link></li>
+        <li><Link to="/menu" className="uppercase me-2 navbar-button font-bold">Our Menu</Link></li>
+        <li><Link to="/order/salad" className="uppercase me-2 navbar-button font-bold">Our Food</Link></li>
     </>
+    
+
+    //handle logout
+    const handleLogout = () => {
+        logOut()
+    }
+
     return (
             <div className="navbar md:fixed z-10 max-w-screen-xl bg-black bg-opacity-30 md:text-white ">
                 <div className="navbar-start">
@@ -41,8 +50,17 @@ const Navbar = () => {
                         {navOptions}
                     </ul>
                 </div>
-                <div className="navbar-end">
-                    <a className="btn">Button</a>
+                <div className="navbar-end md:me-4">
+                    {
+                        user ? <>
+                        <div className=" me-4 flex flex-col items-center justify-center ">
+                        <img className="rounded-full w-8" src={user.photoURL} alt="" />
+                        <p className="">{user.displayName.slice(0,8)}</p>
+                        </div>
+                         <Link onClick={handleLogout} className="uppercase me-2 font-bold">Log Out</Link>
+                        </>
+                        : <Link to="/login" className="uppercase me-2 font-bold">Login</Link>
+                    }
                 </div>
             </div>
     );

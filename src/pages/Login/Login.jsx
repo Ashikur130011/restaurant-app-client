@@ -21,6 +21,7 @@ const Login = () => {
         loadCaptchaEnginge(6);
     }, [])
 
+
     const handleCaptcha = () => {
         const user_captcha_value = captchaRef.current.value
         console.log(user_captcha_value)
@@ -34,6 +35,14 @@ const Login = () => {
         googleSignIn()
             .then(result => {
                 console.log(result)
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Successfully Logged In By Google",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                  navigate(location?.state ? location.state : '/')
             })
             .catch(error => {
                 console.log(error.message)
@@ -71,15 +80,15 @@ const Login = () => {
             <Helmet>
                 <title>Restaurant | Login</title>
             </Helmet>
-            <div className="p-8 font-serif bgImage min-h-screen">
-                <h1 className="text-5xl py-8 font-bold">Login now!</h1>
+            <div className="p-8 font-serif  bgImage min-h-screen">
+                <h1 className="text-5xl py-8 text-orange-400 font-bold">Login now!</h1>
                 <div className="flex justify-around flex-col lg:flex-row">
                     <div>
                         <img src={loginImg} alt="" />
                     </div>
-                    <div className=" w-full max-w-sm shrink-0 shadow-xl rounded-2xl">
+                    <div className=" w-full max-w-sm shrink-0 shadow-md rounded-2xl">
 
-                        <form onSubmit={handlelogin} className="card-body">
+                        <form onSubmit={handlelogin}  className="card-body">
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>

@@ -27,6 +27,7 @@ const Category = () => {
             <Swiper
                 slidesPerView={4}
                 spaceBetween={30}
+                initialSlide={2}
                 centeredSlides={true}
                 pagination={{
                     clickable: true,
@@ -42,7 +43,7 @@ const Category = () => {
                     <img src={image2} alt="" />
                     <h3 className='text-3xl uppercase font-serif text-white -mt-16 '>Pizzas</h3>
                 </SwiperSlide>
-                <SwiperSlide>
+                <SwiperSlide className='default'>
                     <img src={image3} alt="" />
                     <h3 className='text-3xl uppercase font-serif text-white -mt-16 '>Soup</h3>
                 </SwiperSlide>
