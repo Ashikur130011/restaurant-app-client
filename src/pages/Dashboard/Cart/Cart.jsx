@@ -45,8 +45,8 @@ const Cart = () => {
             ></Title>
             <div className='md:px-14'>
             <div className='flex my-8 justify-around items-center'>
-                <h1 className='text-3xl font-bold'>Total Orders: {cart.length}</h1>
-                <h1 className='text-3xl font-bold'>Total Price: ${totalPrice}</h1>
+                <h1 className='text-2xl font-bold'>Total Orders: {cart.length}</h1>
+                <h1 className='text-2xl font-bold'>Total Price: ${totalPrice}</h1>
                 <button className='btn btn-warning'>Pay</button>
             </div>
             <div className="overflow-x-auto">
@@ -76,16 +76,16 @@ const Cart = () => {
           <td>
             <div className="flex items-center gap-3">
               <div className="avatar">
-                <div className="mask mask-squircle h-12 w-12">
+                <div className="mask mask-squircle h-16 w-16">
                   <img src={item.image} alt="" />
                 </div>
               </div>
             </div>
           </td>
           <td>
-           <div>{item.name}</div>
+           <div className='text-base'>{item.name}</div>
           </td>
-          <td>{item.price}</td>
+          <td className='text-base'>{item.price}</td>
           <th>
             <button onClick={()=>handleCart(item._id)} className="btn btn-ghost"><RiDeleteBin6Fill className='text-2xl text-red-600'/></button>
           </th>

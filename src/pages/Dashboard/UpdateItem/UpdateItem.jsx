@@ -1,56 +1,41 @@
 import { GiForkKnifeSpoon } from 'react-icons/gi';
 import Title from '../Title/Title';
-import { useForm } from 'react-hook-form';
-import useAxiosPublic from '../../../hooks/useAxiosPublic';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { useForm } from 'react-hook-form';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
-const img_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY
-const image_hosting_api = `https://api.imgbb.com/1/upload?&key=${img_hosting_key}`
-
-const AddItems = () => {
-    const axiosPublic = useAxiosPublic()
+const UpdateItem = () => {
+    const {category, name, price, recipe, _id } = useLoaderData()
     const axiosSecure = useAxiosSecure()
 
     const { register, handleSubmit, reset } = useForm()
     const onSubmit = async (data) => {
-        console.log(data.image)
-        //image upload to imgbb and then get an url
-        const imgFile = {image: data.image[0]}
-        const res = await axiosPublic.post(image_hosting_api, imgFile, {
-            headers: {'Content-Type': 'multipart/form-data' },
-        })
-        if(res.data.success){
+       
             //now send the menu data to the server with img url
             const menuItem = {
                 name: data.name,
                 category: data.category,
                 price: parseFloat(data.price),
                 recipe: data.recipe,
-                image: res.data.data.display_url
             }
-            const menuRes = await axiosSecure.post('/menu', menuItem)
+            const menuRes = await axiosSecure.patch(`/menu/${_id}`, menuItem)
             console.log(menuRes.data)
-            if(menuRes.data.insertedId){
+            if(menuRes.data.modifiedCount > 0){
                 reset()
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: `${data.name} added successfully`,
+                    title: `${data.name} updated successfully`,
                     showConfirmButton: false,
                     timer: 1500
                   });
             }
             
-        }
-        console.log(res.data)
     }
     return (
         <div>
-            <Title
-                heading="Add an Item"
-                subHeading="What's new?"
-            ></Title>
+            <Title heading="Update an item" subHeading="As your wish" ></Title>
             <div className='md:w-3/4 mx-auto'>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <label className="form-control w-full pt-4">
@@ -60,7 +45,8 @@ const AddItems = () => {
                         <input
                             type="text"
                             {...register("name", {required: true})}
-                            placeholder="Recipe Name*"
+                            defaultValue={name}
+                            placeholder="Recipe Name"
                             className="input input-bordered w-full" />
 
                     </label>
@@ -69,7 +55,7 @@ const AddItems = () => {
                             <div className="label">
                                 <span className="label-text">Category*</span>
                             </div>
-                            <select defaultValue='default' {...register("category", {required: true})}
+                            <select defaultValue={category} {...register("category", {required: true})}
                                 className='select select-bordered w-full'>
                                 <option disabled value="default">Select a category</option>
                                 <option value="salad">Salad</option>
@@ -87,6 +73,7 @@ const AddItems = () => {
                             <input
                                 type="number"
                                 {...register("price", {required: true})}
+                                defaultValue={price}
                                 placeholder="price"
                                 className="input input-bordered w-full" />
 
@@ -99,13 +86,14 @@ const AddItems = () => {
                         </div>
                         <textarea
                             className="textarea textarea-bordered h-24"
+                            defaultValue={recipe}
                             placeholder="Recipe details"
                             {...register('recipe')}
                         ></textarea>
 
                     </label>
-                    <input type="file" {...register('image', {required: true})} className="file-input  w-full my-4" />
-                    <div className='text-start'>
+                    {/* <input type="file" {...register('image', {required: true})} className="file-input  w-full my-4" /> */}
+                    <div className='text-start mt-4'>
                     <button className="btn btn-warning">
                         Add Item
                         <GiForkKnifeSpoon className='text-xl'/>
@@ -117,4 +105,4 @@ const AddItems = () => {
     );
 };
 
-export default AddItems;
+export default UpdateItem;
