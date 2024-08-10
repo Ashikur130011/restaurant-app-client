@@ -7,9 +7,10 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import './Login.css'
 import { Helmet } from 'react-helmet-async';
 import { AuthContext } from '../../providers/AuthProvider';
+import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Login = () => {
-    const { signInUser, googleSignIn } = useContext(AuthContext)
+    const { signInUser } = useContext(AuthContext)
     const location = useLocation()
     const navigate = useNavigate()
 
@@ -31,24 +32,7 @@ const Login = () => {
     }
 
     //handle google login
-    const handleGoogleSignIn = () => {
-        googleSignIn()
-            .then(result => {
-                console.log(result)
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Successfully Logged In By Google",
-                    showConfirmButton: false,
-                    timer: 1500
-                  });
-                  navigate(location?.state ? location.state : '/')
-            })
-            .catch(error => {
-                console.log(error.message)
-            })
-    }
-
+   
     //handle email-password  login
     const handlelogin = (e) => {
         e.preventDefault()
@@ -123,12 +107,7 @@ const Login = () => {
                         </form>
 
                         {/* google sign-in */}
-                        <div className='pb-4'>
-                            <button onClick={handleGoogleSignIn} className="">
-                                <FcGoogle className='text-3xl ' />
-                            </button>
-
-                        </div>
+                        <SocialLogin/>
                     </div>
                 </div>
             </div>

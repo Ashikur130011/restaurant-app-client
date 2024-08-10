@@ -66,7 +66,7 @@ const Navbar = () => {
                     user ? <>
                         <div className=" me-4 flex flex-col items-center justify-center ">
                             <img className="rounded-full w-8" src={user.photoURL} alt="" />
-                            <p className="">{user.displayName.slice(0, 8)}</p>
+                            <p className="">{user?.displayName}</p>
                         </div>
                         <Link onClick={handleLogout} className=" text-orange-700 text-3xl"><RiLogoutCircleRLine /></Link>
                     </>

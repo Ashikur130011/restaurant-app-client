@@ -10,6 +10,8 @@ import Register from "../pages/Register/Register"
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute"
 import Dashboard from "../Layout/Dashboard"
 import Cart from "../pages/Dashboard/Cart/Cart"
+import ManageUsers from "../pages/Dashboard/ManageUsers/ManageUsers"
+import AddItems from "../pages/Dashboard/AddItems/AddItems"
 
 
 export const router = createBrowserRouter([
@@ -45,7 +47,16 @@ export const router = createBrowserRouter([
       children: [
         {
           path: 'cart',
-          element: <Cart></Cart>
+          element: <ProtectedRoute><Cart></Cart></ProtectedRoute>
+        },
+        //admin only
+        {
+          path: 'users',
+          element: <ProtectedRoute><ManageUsers></ManageUsers></ProtectedRoute>
+        },
+        {
+          path: 'addItems',
+          element: <ProtectedRoute><AddItems/></ProtectedRoute>
         }
       ]
     }

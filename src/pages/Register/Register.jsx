@@ -3,28 +3,16 @@ import { Helmet } from 'react-helmet-async';
 import regImage from '../../assets/others/authentication2.png'
 import './Register.css'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { FcGoogle } from 'react-icons/fc';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../providers/AuthProvider';
+import useAxiosPublic from '../../hooks/useAxiosPublic';
+import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Register = () => {
-
-    const { createUser, googleSignIn, userProfile } = useContext(AuthContext)
+    const axiosPublic = useAxiosPublic()
+    const { createUser, userProfile } = useContext(AuthContext)
     const location = useLocation()
     const navigate = useNavigate()
-
-    //handle google login
-    const handleGoogleLogin = () => {
-        googleSignIn()
-            .then(result => {
-                console.log(result.user)
-                navigate(location?.state ? location.state : '/' )
-            })
-            .catch(err => {
-                console.log(err.message)
-                console.log(err.code)
-            })
-    }
 
     //handle email-password register
     const handleRegister = (e) => {
@@ -40,21 +28,28 @@ const Register = () => {
             .then(result => {
                 console.log(result.user)
                 userProfile(name, url)
-                .then(() => {
+                const userInfo = {
+                    name: name,
+                    email: email
+                }
+                axiosPublic.post('/user', userInfo)
+                    .then(res => {
+                        if (res.data.insertedId) {
+                            Swal.fire({
+                                position: "top-end",
+                                icon: "success",
+                                title: "Resistered Successfully",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                            form.reset()
+                            navigate(location?.state ? location.state : '/')
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error.message)
+                    })
 
-                })
-                .catch(error => {
-                    console.log(error.message)
-                })
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Resistered Successfully",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-                form.reset()
-                navigate(location?.state ? location.state : '/' )
             })
             .catch(err => {
                 console.log(err.message)
@@ -110,12 +105,7 @@ const Register = () => {
                         </form>
 
                         {/* google sign-in */}
-                        <div className='mb-4'>
-                            <button onClick={handleGoogleLogin} className="">
-                                <FcGoogle className='text-3xl ' />
-                            </button>
-
-                        </div>
+                        <SocialLogin />
                     </div>
                 </div>
             </div>
