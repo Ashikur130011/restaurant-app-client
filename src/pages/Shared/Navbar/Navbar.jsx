@@ -5,11 +5,13 @@ import './Navbar.css'
 import { RiLogoutCircleRLine, RiLoginCircleLine } from "react-icons/ri";
 import { GiShoppingCart } from "react-icons/gi";
 import useCart from "../../../hooks/useCart";
+import useAdmin from "../../../hooks/useAdmin";
 
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext)
     const [cart] = useCart()
+    const [isAdmin] = useAdmin()
 
     const navOptions = <>
         <li><Link to="/" className="uppercase me-2 navbar-button font-bold">Home</Link></li>
@@ -58,10 +60,15 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end md:me-4">
-            <Link to='/dashboard/cart'><button className="me-3 flex text-green-600 items-center">
+            {isAdmin? <Link to='/dashboard/manageItems'><button className="me-3 flex text-green-600 items-center">
             <GiShoppingCart className="text-2xl" />
             <div className="badge badge-success text-white ">+{cart.length}</div>
-        </button></Link>
+        </button></Link>:
+        <Link to='/dashboard/cart'><button className="me-3 flex text-green-600 items-center">
+        <GiShoppingCart className="text-2xl" />
+        <div className="badge badge-success text-white ">+{cart.length}</div>
+    </button></Link>
+        }
                 {
                     user ? <>
                         <div className=" me-4 flex flex-col items-center justify-center ">

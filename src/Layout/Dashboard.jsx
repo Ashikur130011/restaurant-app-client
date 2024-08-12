@@ -36,7 +36,7 @@ const Dashboard = () => {
                         <NavLink to="/dashboard/manageItems" className="uppercase" ><GiNotebook className="text-2xl" />Manage Items</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/dashboard/payment" className="uppercase" ><GiWallet className="text-2xl" />Manage Booking</NavLink>
+                        <NavLink to="/dashboard/manage" className="uppercase" ><GiWallet className="text-2xl" />Manage Booking</NavLink>
                     </li>
                     <li>
                         <NavLink to="/dashboard/users" className="uppercase" ><HiUserGroup className="text-2xl" />All Users</NavLink>
