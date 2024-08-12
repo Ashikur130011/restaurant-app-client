@@ -51,11 +51,12 @@ const Dashboard = () => {
                     <li>
                         <NavLink to="/dashboard/reservation" className="uppercase" ><FaCalendarAlt className="text-2xl" />reservation</NavLink>
                     </li>
-                    <li>
-                        <NavLink to="/dashboard/payment" className="uppercase" ><GiWallet className="text-2xl" />payment</NavLink>
-                    </li>
+                    
                     <li>
                         <NavLink to="/dashboard/cart" className="uppercase" ><TiShoppingCart className="text-2xl" />My Cart</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/dashboard/paymentHistory" className="uppercase" ><GiWallet className="text-2xl" />payment history</NavLink>
                     </li>
                     <li>
                         <NavLink to="/dashboard/addReview" className="uppercase" ><MdRateReview className="text-2xl" />add review</NavLink>

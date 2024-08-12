@@ -15,6 +15,8 @@ import AddItems from "../pages/Dashboard/AddItems/AddItems"
 import ManageItems from "../pages/Dashboard/ManageItems/ManageItems"
 import UpdateItem from "../pages/Dashboard/UpdateItem/UpdateItem"
 import AdminRoute from "../ProtectedRoute/AdminRoute"
+import Payment from "../pages/Dashboard/Payment/Payment"
+import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory"
 
 
 export const router = createBrowserRouter([
@@ -46,11 +48,19 @@ export const router = createBrowserRouter([
   },
    {
       path: 'dashboard',
-      element: <Dashboard></Dashboard>,
+      element: <ProtectedRoute><Dashboard/></ProtectedRoute>,
       children: [
         {
           path: 'cart',
-          element: <ProtectedRoute><Cart></Cart></ProtectedRoute>
+          element: <Cart></Cart>
+        },
+        {
+          path: 'payment',
+          element:<Payment/>
+        },
+        {
+          path: 'paymentHistory',
+          element: <PaymentHistory/>
         },
         //admin only
         {
