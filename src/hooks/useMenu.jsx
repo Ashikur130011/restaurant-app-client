@@ -7,7 +7,7 @@ const useMenu = () => {
     const axiosPublic = useAxiosPublic()
 
     // useEffect( () => {
-    //     fetch('https://restaurant-project-server-peach.vercel.app/menu')
+    //     fetch('http://localhost:5000/menu')
     //     .then(res => res.json())
     //     .then(data => {
     //         setMenu(data)

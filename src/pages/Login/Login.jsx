@@ -1,7 +1,6 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import loginImg from '../../assets/others/authentication2.png'
 import Swal from 'sweetalert2';
-import { FcGoogle } from 'react-icons/fc';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { useContext, useEffect, useRef, useState } from 'react';
 import './Login.css'

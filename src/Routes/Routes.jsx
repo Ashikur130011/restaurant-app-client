@@ -19,12 +19,14 @@ import Payment from "../pages/Dashboard/Payment/Payment"
 import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory"
 import UserDashboard from "../pages/Dashboard/UserDashboard/UserDashboard"
 import AdminDashboard from "../pages/Dashboard/AdminDashboard/AdminDashboard"
+import ErrorPage from "./ErrorPage"
 
 
 export const router = createBrowserRouter([
   {
     path: '/',
     element: <Main />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: '/',
@@ -88,12 +90,12 @@ export const router = createBrowserRouter([
         {
           path: 'updateItem/:id',
           element: <AdminRoute><UpdateItem/></AdminRoute>,
-          loader: ({params}) => fetch(`https://restaurant-project-server-peach.vercel.app/menu/${params.id}`)
+          loader: ({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
         },
         // {
         //   path: 'updateItem/:id',
         //   element: <AdminRoute><UpdateItem/></AdminRoute>,
-        //   loader: () => fetch("https://restaurant-project-server-peach.vercel.app/menu")
+        //   loader: () => fetch("http://localhost:5000/menu")
         // }
       ]
     }

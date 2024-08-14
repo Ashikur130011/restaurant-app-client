@@ -25,7 +25,7 @@ const AdminDashboard = () => {
     // console.log(stats)
 
     // useEffect( () => {
-    //     fetch('https://restaurant-project-server-peach.vercel.app/admin-stats')
+    //     fetch('http://localhost:5000/admin-stats')
     //     .then(res => res.json())
     //     .then(data => {
     //         console.log(data)
@@ -59,7 +59,7 @@ const AdminDashboard = () => {
 
     //pie chart
     const RADIAN = Math.PI / 180;
-    const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
+    const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent}) => {
         const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
         const x = cx + radius * Math.cos(-midAngle * RADIAN);
         const y = cy + radius * Math.sin(-midAngle * RADIAN);
