@@ -94,7 +94,7 @@ const Login = () => {
                                 <LoadCanvasTemplate />
                                 <div className='flex items-center justify-around'>
                                     <input type="text" ref={captchaRef} name='captcha' placeholder="type the captcha above.." className="input input-bordered" required />
-                                    <input onClick={handleCaptcha} type="checkbox" className="checkbox checkbox-primary" />
+                                    <input onClick={handleCaptcha} type="checkbox"  className="checkbox checkbox-primary" />
                                 </div>
                             </div>
                             <div className="form-control">

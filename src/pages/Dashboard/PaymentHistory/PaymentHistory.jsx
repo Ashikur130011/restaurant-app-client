@@ -19,8 +19,9 @@ const PaymentHistory = () => {
     return (
         <div>
             <Title subHeading="At a Glance" heading="Payment History"></Title>
-            <h1 className='text-2xl font-bold mt-8 '>Total Payment: {payments.length}</h1>
-            <div className="overflow-x-auto w-3/4 mx-auto mt-6">
+           <div className=' w-5/6 mx-auto'>
+           <h1 className='text-2xl font-bold text-left mt-8 '>Total Payment: {payments.length}</h1>
+            <div className="overflow-x-auto mt-6">
                 <table className="table">
                     {/* head */}
                     <thead>
@@ -38,7 +39,7 @@ const PaymentHistory = () => {
                                 <th>{index + 1}</th>
                                 <td>{payment.email}</td>
                                 <td>{payment.transactionId}</td>
-                                <td>{payment.price}</td>
+                                <td>$ {payment.price}</td>
                                 <td>pending</td>
                             </tr>)
                         }
@@ -47,6 +48,7 @@ const PaymentHistory = () => {
                     </tbody>
                 </table>
             </div>
+           </div>
         </div>
     );
 };

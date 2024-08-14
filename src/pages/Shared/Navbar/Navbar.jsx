@@ -18,8 +18,12 @@ const Navbar = () => {
         <li><Link to="/" className="uppercase me-2 navbar-button font-bold">Contact Us</Link></li>
         <li><Link to="/menu" className="uppercase me-2 navbar-button font-bold">Our Menu</Link></li>
         <li><Link to="/order/salad" className="uppercase me-2 navbar-button font-bold">Our Food</Link></li>
-        
-
+        {
+            user && !isAdmin && <li><Link to="/dashboard/userDashboard" className="uppercase me-2 navbar-button font-bold">Dashboard</Link></li>
+        }
+        {
+            user && isAdmin && <li><Link to="/dashboard/adminDashboard" className="uppercase me-2 navbar-button font-bold">Dashboard</Link></li>
+        }
     </>
 
 

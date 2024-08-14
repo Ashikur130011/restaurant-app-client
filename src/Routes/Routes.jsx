@@ -17,6 +17,8 @@ import UpdateItem from "../pages/Dashboard/UpdateItem/UpdateItem"
 import AdminRoute from "../ProtectedRoute/AdminRoute"
 import Payment from "../pages/Dashboard/Payment/Payment"
 import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory"
+import UserDashboard from "../pages/Dashboard/UserDashboard/UserDashboard"
+import AdminDashboard from "../pages/Dashboard/AdminDashboard/AdminDashboard"
 
 
 export const router = createBrowserRouter([
@@ -62,10 +64,18 @@ export const router = createBrowserRouter([
           path: 'paymentHistory',
           element: <PaymentHistory/>
         },
+        {
+          path: 'userDashboard',
+          element: <UserDashboard/>
+        },
         //admin only
         {
           path: 'users',
           element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
+        },
+        {
+          path: 'adminDashboard',
+          element: <AdminRoute><AdminDashboard/></AdminRoute>
         },
         {
           path: 'addItems',
@@ -78,12 +88,12 @@ export const router = createBrowserRouter([
         {
           path: 'updateItem/:id',
           element: <AdminRoute><UpdateItem/></AdminRoute>,
-          loader: ({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
+          loader: ({params}) => fetch(`https://restaurant-project-server-peach.vercel.app/menu/${params.id}`)
         },
         // {
         //   path: 'updateItem/:id',
         //   element: <AdminRoute><UpdateItem/></AdminRoute>,
-        //   loader: () => fetch("http://localhost:5000/menu")
+        //   loader: () => fetch("https://restaurant-project-server-peach.vercel.app/menu")
         // }
       ]
     }
