@@ -33,6 +33,6 @@ Firebase,
 MongoDB Atlas,
 Node js,
 Express,
-Vercel CLi,
+Vercel CLI,
 SweetAlert2
 
